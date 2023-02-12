@@ -1,0 +1,21 @@
+{{define "stream"}}
+<div class="stream" id="stream">
+  <ul>
+    {{ range $key, $post := .Stream}}
+    <li class="post" id="{{$post.ID}}" data-title="{{$post.Title}}">
+      <div class="postImg">
+        <img src="{{$post.Image}}" />
+      </div>
+      <div class="postInfo">
+        {{$key}}
+        {{$post.ID}}
+        {{$post.Title}}
+        {{$post.Body}}
+        <div class="likeButt liked_{{$post.Liked}}" id="heart_{{$post.ID}}" onClick="like('{{$post.ID}}', '{{$.UserData.IsLoggedIn}}')"></div>
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{end}}
+
